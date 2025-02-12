@@ -33,11 +33,25 @@ function TaskList() {
           Pendentes
         </button>
       </div>
-      <ul className="list-group">
-        {filteredTasks.map((task) => (
-          <TaskItem key={task.id} task={task} setTasks={setTasks} />
-        ))}
-      </ul>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tarefa</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredTasks.map((task, index) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              setTasks={setTasks}
+              index={index + 1}
+            />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

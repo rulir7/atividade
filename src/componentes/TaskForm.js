@@ -8,7 +8,12 @@ function TaskForm() {
   const navigate = useNavigate();
 
   const addTask = () => {
-    const newTaskObj = { title: newTask, completed: false };
+    const newTaskObj = {
+      title: newTask,
+      completed: false,
+      createdAt: new Date().toISOString(),
+      completedAt: null,
+    };
     fetch("http://localhost:3000/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

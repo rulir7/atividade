@@ -3,17 +3,30 @@
     {
       "id": "1",
       "title": "Estudar React",
-      "completed": false
+      "completed": false,
+      "createdAt": "2023-10-01T10:00:00Z",
+      "completedAt": null
     },
     {
       "id": "2",
-      "title": "Criar dois projetos",
-      "completed": false
+      "title": "Criar um projeto",
+      "completed": true,
+      "createdAt": "2023-10-02T11:00:00Z",
+      "completedAt": "2025-02-12T12:44:39.491Z"
     },
     {
-      "id": "33e4",
-      "title": "Teste apagar",
-      "completed": true
+      "id": "e3ec",
+      "title": "Teste",
+      "completed": true,
+      "createdAt": "2023-10-03T12:00:00Z",
+      "completedAt": "2025-02-12T13:27:42.325Z"
+    },
+    {
+      "id": "ffbd",
+      "title": "Testar função horário",
+      "completed": true,
+      "createdAt": "2025-02-12T13:28:01.120Z",
+      "completedAt": "2025-02-12T13:28:06.840Z"
     }
   ]
 }
