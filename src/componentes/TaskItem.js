@@ -5,22 +5,38 @@ function TaskItem({ task, setTasks }) {
   const [editedTitle, setEditedTitle] = useState(task.title);
 
   const toggleTask = () => {
-    setTasks((prev) =>
-      prev.map((t) =>
-        t.id === task.id ? { ...t, completed: !t.completed } : t
-      )
-    );
+    fetch(`http://localhost:3000/tasks/${task.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ completed: !task.completed }),
+    }).then(() => {
+      setTasks((prev) =>
+        prev.map((t) =>
+          t.id === task.id ? { ...t, completed: !t.completed } : t
+        )
+      );
+    });
   };
 
   const deleteTask = () => {
-    setTasks((prev) => prev.filter((t) => t.id !== task.id));
+    fetch(`http://localhost:3000/tasks/${task.id}`, { method: "DELETE" }).then(
+      () => {
+        setTasks((prev) => prev.filter((t) => t.id !== task.id));
+      }
+    );
   };
 
   const saveEdit = () => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === task.id ? { ...t, title: editedTitle } : t))
-    );
-    setIsEditing(false);
+    fetch(`http://localhost:3000/tasks/${task.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: editedTitle }),
+    }).then(() => {
+      setTasks((prev) =>
+        prev.map((t) => (t.id === task.id ? { ...t, title: editedTitle } : t))
+      );
+      setIsEditing(false);
+    });
   };
 
   return (
