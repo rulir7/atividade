@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 function TaskItem({ task, setTasks }) {
-  const [showDetails, setShowDetails] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
 
@@ -25,10 +24,7 @@ function TaskItem({ task, setTasks }) {
   };
 
   return (
-    <li
-      className="list-group-item d-flex justify-content-between align-items-center"
-      onClick={() => setShowDetails(!showDetails)}
-    >
+    <li className="list-group-item d-flex justify-content-between align-items-center">
       <input
         type="checkbox"
         className="form-check-input"
@@ -44,28 +40,33 @@ function TaskItem({ task, setTasks }) {
       ) : (
         <span>{task.title}</span>
       )}
-      {showDetails && (
-        <div className="ms-3">
-          <p className="mb-1">
-            <strong>Status:</strong> {task.completed ? "Concluída" : "Pendente"}
-          </p>
-          {isEditing ? (
-            <button className="btn btn-sm btn-primary" onClick={saveEdit}>
-              Salvar
-            </button>
-          ) : (
-            <button
-              className="btn btn-sm btn-warning"
-              onClick={() => setIsEditing(true)}
-            >
-              Editar
-            </button>
-          )}
-          <button className="btn btn-sm btn-danger ms-2" onClick={deleteTask}>
-            Deletar
-          </button>
-        </div>
+      <button
+        className="btn btn-sm btn-info ms-2"
+        onClick={() =>
+          alert(
+            `Tarefa: ${task.title}\nStatus: ${
+              task.completed ? "Concluída" : "Pendente"
+            }`
+          )
+        }
+      >
+        Detalhes
+      </button>
+      {isEditing ? (
+        <button className="btn btn-sm btn-primary ms-2" onClick={saveEdit}>
+          Salvar
+        </button>
+      ) : (
+        <button
+          className="btn btn-sm btn-warning ms-2"
+          onClick={() => setIsEditing(true)}
+        >
+          Editar
+        </button>
       )}
+      <button className="btn btn-sm btn-danger ms-2" onClick={deleteTask}>
+        Deletar
+      </button>
     </li>
   );
 }
