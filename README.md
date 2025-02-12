@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Site deploy vercel = https://atividade-lake.vercel.app/tasks
 
+## Github : https://github.com/rulir7/atividade/
+
 ## Available Scripts
 
 In the project directory, you can run:
