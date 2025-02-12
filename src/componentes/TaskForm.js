@@ -8,10 +8,18 @@ function TaskForm() {
   const navigate = useNavigate();
 
   const addTask = () => {
-    const newTaskObj = { id: Date.now(), title: newTask, completed: false };
-    setTasks((prev) => [...prev, newTaskObj]);
-    setNewTask("");
-    navigate("/tasks");
+    const newTaskObj = { title: newTask, completed: false };
+    fetch("http://localhost:3000/tasks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newTaskObj),
+    })
+      .then((res) => res.json())
+      .then((task) => {
+        setTasks((prev) => [...prev, task]);
+        setNewTask("");
+        navigate("/tasks");
+      });
   };
 
   return (

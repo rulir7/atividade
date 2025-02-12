@@ -9,6 +9,11 @@
       "id": "2",
       "title": "Criar dois projetos",
       "completed": false
+    },
+    {
+      "id": "33e4",
+      "title": "Teste apagar",
+      "completed": true
     }
   ]
 }
