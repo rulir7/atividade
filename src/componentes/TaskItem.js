@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 
 function TaskItem({ task, setTasks, index }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(task.title);
+  const navigate = useNavigate();
 
   const toggleTask = () => {
     const completedAt = !task.completed ? new Date().toISOString() : null;
@@ -70,17 +72,7 @@ function TaskItem({ task, setTasks, index }) {
       <td>
         <button
           className="btn btn-sm btn-info me-2"
-          onClick={() =>
-            alert(
-              `Tarefa: ${task.title}\nStatus: ${
-                task.completed ? "Concluída" : "Pendente"
-              }\nData de Criação: ${formatDate(
-                task.createdAt
-              )}\nData de Conclusão: ${
-                task.completedAt ? formatDate(task.completedAt) : "N/A"
-              }`
-            )
-          }
+          onClick={() => navigate(`/tasks/${task.id}`)}
         >
           Detalhes
         </button>

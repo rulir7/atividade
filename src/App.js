@@ -1,13 +1,9 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useNavigate,
-} from "react-router-dom";
+import React, { useState, useEffect, createContext } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./componentes/Header";
 import TaskForm from "./componentes/TaskForm";
 import TaskList from "./componentes/TaskList";
+import TaskDetails from "./componentes/TaskDetails";
 
 const TaskContext = createContext();
 
@@ -28,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<TaskForm />} />
           <Route path="/tasks" element={<TaskList />} />
+          <Route path="/tasks/:id" element={<TaskDetails tasks={tasks} />} />
         </Routes>
       </Router>
     </TaskContext.Provider>
